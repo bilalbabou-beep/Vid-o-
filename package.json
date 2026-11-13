@@ -1,0 +1,25 @@
+{
+  "name": "vid-o-",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bilalbabou-beep/Vid-o-.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bilalbabou-beep/Vid-o-/issues"
+  },
+  "homepage": "https://github.com/bilalbabou-beep/Vid-o-#readme",
+  "dependencies": {
+    "@fontsource/barlow": "^5.0.13",
+    "@fontsource/barlow-condensed": "^5.0.13",
+    "gsap": "^3.12.5"
+  }
+}
