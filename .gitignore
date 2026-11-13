@@ -4,3 +4,4 @@ out/stills/
 out/*.wav
 out/video_noaudio.mp4
 out/contact*.jpg
+src/poster-test.html

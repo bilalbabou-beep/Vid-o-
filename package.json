@@ -20,6 +20,7 @@
   "dependencies": {
     "@fontsource/barlow": "^5.0.13",
     "@fontsource/barlow-condensed": "^5.0.13",
+    "@fontsource/montserrat": "^5.0.19",
     "gsap": "^3.12.5"
   }
 }
