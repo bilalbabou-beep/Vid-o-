@@ -264,8 +264,14 @@ fade = np.interp(tt, [0, 29.0, 30.0], [1, 1, 0.0])
 music_l = (M + Ms * 0.9) * duck; music_r = (M + Ms * 1.1) * duck
 mixL = (music_l * 0.55 + L * 0.8 + cr) * fade
 mixR = (music_r * 0.55 + R * 0.8 + np.roll(cr, 977)) * fade
+import os
+if os.environ.get('SFX_ONLY'):  # transitions stem only (whooshes / impacts), used under the client's music
+    mixL = L * fade; mixR = R * fade
 peak = max(np.abs(mixL).max(), np.abs(mixR).max())
-mixL /= peak; mixR /= peak
+if not os.environ.get('SFX_ONLY'):
+    mixL /= peak; mixR /= peak
+else:
+    mixL /= peak; mixR /= peak
 out = np.stack([mixL, mixR], 1) * 0.89
 pcm = (np.clip(out, -1, 1) * 32767).astype('<i2')
 with wave.open(sys.argv[1] if len(sys.argv) > 1 else 'out/sound.wav', 'wb') as w:
