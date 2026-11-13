@@ -46,12 +46,12 @@ body{font-family:MS,sans-serif;color:#fff;-webkit-font-smoothing:antialiased}
 /* team : everything in poster coordinates (1080 x 1320) */
 #team{position:absolute;left:0;top:0;width:1080px;height:1320px;transform-origin:0 0}
 #team img{position:absolute;display:block}
-#ngImg{left:332px;top:93px;width:416px;height:456px}
+#ngImg{left:332px;top:106px;width:416px;height:456px}
 #legShade{position:absolute;left:-400px;top:860px;width:1880px;height:900px;background:linear-gradient(180deg, transparent 0%, rgba(14,2,3,.5) 22%, rgba(10,1,2,.85) 42%, #0a0102 62%)}
 #pSph{left:71px;top:117px;width:164px;height:164px}
 #pBand{left:388px;top:0;width:305px;height:8px}
 #pL1{left:510px;top:0;width:59px;height:64px}
-#p5{left:400px;top:69px;width:280px;height:17px}
+#p5{left:400px;top:72px;width:280px;height:17px}
 #pDate{left:293px;top:1164px;width:145px;height:36px}
 #pClubs{left:472px;top:1147px;width:137px;height:70px}
 #pTime{left:640px;top:1164px;width:159px;height:36px}
@@ -266,7 +266,7 @@ tl.to('#flash',{opacity:.5,duration:.04},7.2).to('#flash',{opacity:0,duration:.4
 tl.to('#team',{...GROUP,duration:.6,ease:'expo.inOut'},8.0);
 tl.to('#team',{...shot(545,760,1.16,1180),duration:2.15,ease:'none'},8.6);
 tl.set('#ngImg',{autoAlpha:1},8.3);
-tl.fromTo('#ngImg',{clipPath:'inset(100% 0 0 0)',y:60},{clipPath:'inset(0% 0 0 0)',y:0,duration:.55,ease:E.in},8.3);
+tl.fromTo('#ngImg',{clipPath:'inset(100% 0 0 0)',y:-40,scale:1.1},{clipPath:'inset(0% 0 0 0)',y:-100,scale:1.1,duration:.55,ease:E.in},8.3);
 tl.to('#flashR',{opacity:.5,duration:.05},8.45).to('#flashR',{opacity:0,duration:.4},8.5);
 tl.to('#ngImg',{autoAlpha:0,filter:'blur(12px)',duration:.3,ease:E.out},10.72);
 tl.to('#team',{...VSHOT,filter:'blur(4px) brightness(.5)',duration:.55,ease:E.io},10.75);
@@ -335,7 +335,7 @@ tl.to('#dim',{opacity:0,duration:.3},24.9);
 tl.set('#sphA',{autoAlpha:0},24.98);
 tl.set('#players',{autoAlpha:1},24.98);
 tl.set('#team',{filter:'blur(0px) brightness(1)'},24.98);
-tl.set('#ngImg',{autoAlpha:1,clipPath:'inset(0% 0 0 0)',filter:'blur(0px)'},24.98);
+tl.set('#ngImg',{autoAlpha:1,clipPath:'inset(0% 0 0 0)',filter:'blur(0px)',scale:1},24.98);
 tl.to('#flash',{opacity:.9,duration:.04},25.0).to('#flash',{opacity:0,duration:.6},25.04);
 tl.fromTo('#world',{scale:1.08},{scale:1.0,duration:.7,ease:E.in},25.0);
 tl.to(FX,{embers:1,smoke:.6,duration:.4},25);
