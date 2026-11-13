@@ -86,7 +86,7 @@ body{font-family:MS,sans-serif;color:#fff;-webkit-font-smoothing:antialiased}
 #r3 .big{color:#fff;font-size:76px}
 
 /* seq 5 : slogan under the poster */
-#slogan{left:0;top:1650px;width:1080px;text-align:center;font:700 40px/1 MS;color:#fff;white-space:nowrap}
+#slogan{left:0;top:1720px;width:1080px;text-align:center;font:700 40px/1 MS;color:#fff;white-space:nowrap}
 #slogan b{color:var(--yellow);font-weight:800}
 </style>
 </head>
@@ -335,29 +335,29 @@ tl.to('#dim',{opacity:0,duration:.3},24.9);
 tl.set('#sphA',{autoAlpha:0},24.98);
 tl.set('#players',{autoAlpha:1},24.98);
 tl.set('#team',{filter:'blur(0px) brightness(1)'},24.98);
-tl.set('#legShade',{y:60},24.98);
+tl.set('#legShade',{y:120},24.98);
 tl.set('#ngImg',{autoAlpha:1,clipPath:'inset(0% 0 0 0)',filter:'blur(0px)',scale:1},24.98);
 tl.to('#flash',{opacity:.9,duration:.04},25.0).to('#flash',{opacity:0,duration:.6},25.04);
 tl.fromTo('#world',{scale:1.08},{scale:1.0,duration:.7,ease:E.in},25.0);
 tl.to(FX,{embers:1,smoke:.6,duration:.4},25);
 tl.fromTo('#team',{x:540-540*1.35,y:-60,scale:1.35},{...FINAL,duration:.7,ease:E.in,immediateRender:false},25.0);
 tl.fromTo('#ngImg',{y:-200,filter:'blur(14px)'},{y:0,filter:'blur(0px)',duration:.6,ease:E.in,immediateRender:false},25.0);
-tl.fromTo('#p1',{x:-260,y:60,filter:'blur(12px)'},{x:0,y:60,filter:'blur(0px)',duration:.55,ease:E.in,immediateRender:false},25.05);
-tl.fromTo('#p4',{x:260,y:60,filter:'blur(12px)'},{x:0,y:60,filter:'blur(0px)',duration:.55,ease:E.in,immediateRender:false},25.05);
-tl.fromTo('#p3',{y:-100,filter:'blur(12px)'},{y:60,filter:'blur(0px)',duration:.55,ease:E.in,immediateRender:false},25.1);
-tl.fromTo('#p2',{y:220,filter:'blur(12px)'},{y:60,filter:'blur(0px)',duration:.6,ease:E.in,immediateRender:false},25.15);
+tl.fromTo('#p1',{x:-260,y:120,filter:'blur(12px)'},{x:0,y:120,filter:'blur(0px)',duration:.55,ease:E.in,immediateRender:false},25.05);
+tl.fromTo('#p4',{x:260,y:120,filter:'blur(12px)'},{x:0,y:120,filter:'blur(0px)',duration:.55,ease:E.in,immediateRender:false},25.05);
+tl.fromTo('#p3',{y:-40,filter:'blur(12px)'},{y:120,filter:'blur(0px)',duration:.55,ease:E.in,immediateRender:false},25.1);
+tl.fromTo('#p2',{y:280,filter:'blur(12px)'},{y:120,filter:'blur(0px)',duration:.6,ease:E.in,immediateRender:false},25.15);
 tl.fromTo('#pSph',{autoAlpha:0,scale:.3},{autoAlpha:1,scale:1,duration:.5,ease:E.in},25.2);
 tl.fromTo('#pBand',{autoAlpha:0,scaleX:0},{autoAlpha:1,scaleX:1,duration:.45,ease:E.in},25.35);
 tl.fromTo('#pL1',{autoAlpha:0,y:-70},{autoAlpha:1,y:0,duration:.45,ease:E.in},25.45);
 tl.fromTo('#p5',{autoAlpha:0,clipPath:'inset(0 50% 0 50%)'},{autoAlpha:1,clipPath:'inset(0 0% 0 0%)',duration:.5,ease:E.in},25.6);
-tl.fromTo('#pClubs',{autoAlpha:0,scale:0,y:60},{autoAlpha:1,scale:1,y:60,duration:.45,ease:E.back},25.85);
-tl.fromTo('#pDate',{autoAlpha:0,x:-120,y:60},{autoAlpha:1,x:0,y:60,duration:.45,ease:E.in},26.05);
-tl.fromTo('#pTime',{autoAlpha:0,x:120,y:60},{autoAlpha:1,x:0,y:60,duration:.45,ease:E.in},26.3);
+tl.fromTo('#pClubs',{autoAlpha:0,scale:0,y:120},{autoAlpha:1,scale:1,y:120,duration:.45,ease:E.back},25.85);
+tl.fromTo('#pDate',{autoAlpha:0,x:-120,y:120},{autoAlpha:1,x:0,y:120,duration:.45,ease:E.in},26.05);
+tl.fromTo('#pTime',{autoAlpha:0,x:120,y:120},{autoAlpha:1,x:0,y:120,duration:.45,ease:E.in},26.3);
 tl.set('#slogan',{autoAlpha:1},26.9);
 tl.fromTo('#slogan',{opacity:0,y:40,filter:'blur(10px)'},{opacity:1,y:0,filter:'blur(0px)',duration:.5,ease:E.in},26.9);
 tl.to('#team',{x:540-540*1.23,y:0,scale:1.23,duration:4.3,ease:'none'},25.7);
 tl.to('#flashR',{opacity:.8,duration:.04},28.5).to('#flashR',{opacity:0,duration:.7},28.54);
-tl.set(FX,{sparkT:28.5,sparkX:540,sparkY:1670},28.4);
+tl.set(FX,{sparkT:28.5,sparkX:540,sparkY:1740},28.4);
 tl.fromTo('#slogan',{scale:1},{scale:1.06,duration:.12,yoyo:true,repeat:1,ease:'power2.out'},28.5);
 tl.to('#world',{x:7,duration:.04,yoyo:true,repeat:5,ease:'none'},28.5);
 tl.set({},{},30);
