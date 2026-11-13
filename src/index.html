@@ -86,7 +86,7 @@ body{font-family:MS,sans-serif;color:#fff;-webkit-font-smoothing:antialiased}
 #r3 .big{color:#fff;font-size:76px}
 
 /* seq 5 : slogan under the poster */
-#slogan{left:0;top:1720px;width:1080px;text-align:center;font:700 40px/1 MS;color:#fff;white-space:nowrap}
+#slogan{left:0;top:1775px;width:1080px;text-align:center;font:700 40px/1 MS;color:#fff;white-space:nowrap}
 #slogan b{color:var(--yellow);font-weight:800}
 </style>
 </head>
@@ -350,14 +350,14 @@ tl.fromTo('#pSph',{autoAlpha:0,scale:.3},{autoAlpha:1,scale:1,duration:.5,ease:E
 tl.fromTo('#pBand',{autoAlpha:0,scaleX:0},{autoAlpha:1,scaleX:1,duration:.45,ease:E.in},25.35);
 tl.fromTo('#pL1',{autoAlpha:0,y:-70},{autoAlpha:1,y:0,duration:.45,ease:E.in},25.45);
 tl.fromTo('#p5',{autoAlpha:0,clipPath:'inset(0 50% 0 50%)'},{autoAlpha:1,clipPath:'inset(0 0% 0 0%)',duration:.5,ease:E.in},25.6);
-tl.fromTo('#pClubs',{autoAlpha:0,scale:0,y:120},{autoAlpha:1,scale:1,y:120,duration:.45,ease:E.back},25.85);
-tl.fromTo('#pDate',{autoAlpha:0,x:-120,y:120},{autoAlpha:1,x:0,y:120,duration:.45,ease:E.in},26.05);
-tl.fromTo('#pTime',{autoAlpha:0,x:120,y:120},{autoAlpha:1,x:0,y:120,duration:.45,ease:E.in},26.3);
+tl.fromTo('#pClubs',{autoAlpha:0,scale:0,y:175},{autoAlpha:1,scale:1,y:175,duration:.45,ease:E.back},25.85);
+tl.fromTo('#pDate',{autoAlpha:0,x:-120,y:175},{autoAlpha:1,x:0,y:175,duration:.45,ease:E.in},26.05);
+tl.fromTo('#pTime',{autoAlpha:0,x:120,y:175},{autoAlpha:1,x:0,y:175,duration:.45,ease:E.in},26.3);
 tl.set('#slogan',{autoAlpha:1},26.9);
 tl.fromTo('#slogan',{opacity:0,y:40,filter:'blur(10px)'},{opacity:1,y:0,filter:'blur(0px)',duration:.5,ease:E.in},26.9);
 tl.to('#team',{x:540-540*1.23,y:0,scale:1.23,duration:4.3,ease:'none'},25.7);
 tl.to('#flashR',{opacity:.8,duration:.04},28.5).to('#flashR',{opacity:0,duration:.7},28.54);
-tl.set(FX,{sparkT:28.5,sparkX:540,sparkY:1740},28.4);
+tl.set(FX,{sparkT:28.5,sparkX:540,sparkY:1795},28.4);
 tl.fromTo('#slogan',{scale:1},{scale:1.06,duration:.12,yoyo:true,repeat:1,ease:'power2.out'},28.5);
 tl.to('#world',{x:7,duration:.04,yoyo:true,repeat:5,ease:'none'},28.5);
 tl.set({},{},30);
