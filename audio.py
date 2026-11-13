@@ -94,6 +94,24 @@ def crack():
     return x + impact(0.6)[:len(t)] * 0.4
 
 
+import os as _os
+if _os.environ.get('SFX_ONLY'):
+    # under the client's music: no hiss. Risers / reverse cymbals removed,
+    # whooshes kept short, darker and quieter, the lightning crack keeps only its impact.
+    _whoosh = whoosh
+    def riser(d): return np.zeros(int(d * SR))
+    def reverse_cymbal(d): return np.zeros(int(d * SR))
+    def whoosh(d=0.45, up=True, seed=1): return spec_filter(_whoosh(min(d, 0.35), up, seed), hi=1800, order=2) * 0.45
+    def impact(size=1.0):
+        # boom only: no noise tail (the tail sounded like a long "ffff" under the music)
+        d = 1.4 * size; t = t_arr(d)
+        f = 30 + 110 * np.exp(-t * 9)
+        boom = np.sin(2 * np.pi * np.cumsum(f) / SR) * np.exp(-t / (0.45 * size))
+        body = spec_filter(rng.standard_normal(len(t)), hi=500) * np.exp(-t / 0.08)
+        return np.tanh((boom + body * 0.4) * 1.3)
+    def crack(): return impact(0.6) * 0.5
+    def shimmer(d=1.0): return np.zeros(int(d * SR))
+
 # ---------------- music ----------------
 def kick():
     t = t_arr(0.45); f = 45 + 120 * np.exp(-t * 35)
