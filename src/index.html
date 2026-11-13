@@ -4,13 +4,11 @@
 <meta charset="utf-8">
 <title>Next Game J5</title>
 <style>
-@font-face{font-family:BC;src:url(fonts/barlow-condensed-latin-800-normal.woff2);font-weight:800}
-@font-face{font-family:BC;src:url(fonts/barlow-condensed-latin-900-normal.woff2);font-weight:900}
 @font-face{font-family:MS;src:url(fonts/montserrat-latin-500-normal.woff2);font-weight:500}
 @font-face{font-family:MS;src:url(fonts/montserrat-latin-600-normal.woff2);font-weight:600}
 @font-face{font-family:MS;src:url(fonts/montserrat-latin-700-normal.woff2);font-weight:700}
 @font-face{font-family:MS;src:url(fonts/montserrat-latin-800-normal.woff2);font-weight:800}
-:root{--yellow:#FFE600;--red:#E3121B}
+:root{--yellow:#FFE600}
 *{margin:0;padding:0;box-sizing:border-box}
 html,body{width:1080px;height:1920px;overflow:hidden;background:#140203}
 body{font-family:MS,sans-serif;color:#fff;-webkit-font-smoothing:antialiased}
@@ -18,99 +16,78 @@ body{font-family:MS,sans-serif;color:#fff;-webkit-font-smoothing:antialiased}
 .abs{position:absolute}.full{position:absolute;inset:0}
 #world{position:absolute;inset:0;transform-origin:540px 900px}
 
-/* ---------- poster background (fond + spheres + texture from the poster files) ---------- */
+/* poster background: fond + spheres + texture (poster files) */
 #base{background:radial-gradient(ellipse 760px 1100px at 50% 40%, #E3151B 0%, #C10E12 45%, #7a0a0a 75%, #2a0605 100%)}
 #fond{position:absolute;left:-245px;top:0;width:1571px;height:1920px}
-#bottomDark{background:linear-gradient(180deg, transparent 0%, transparent 70%, rgba(8,1,2,.7) 86%, #080102 100%)}
+#bottomDark{background:linear-gradient(180deg, transparent 0%, transparent 72%, rgba(8,1,2,.7) 86%, #080102 100%)}
 .sph{position:absolute}
 #sphA{left:60px;top:400px;width:180px}
 #sphB{left:780px;top:1080px;width:460px;filter:blur(5px)}
 #sphC{left:-190px;top:1290px;width:360px;filter:blur(5px)}
 #texture{position:absolute;left:-245px;top:0;width:1571px;height:1920px;mix-blend-mode:multiply;pointer-events:none}
 #dark{background:#0d0102}
-#vignette{background:radial-gradient(ellipse 780px 1150px at 50% 46%, transparent 58%, rgba(8,0,1,.8) 100%)}
+#dim{background:#0d0102;opacity:0}
+#vignette{background:radial-gradient(ellipse 780px 1150px at 50% 46%, transparent 58%, rgba(8,0,1,.75) 100%)}
 #beam{left:-700px;top:-400px;width:520px;height:3000px;background:linear-gradient(90deg, transparent, rgba(255,240,220,.15) 30%, rgba(255,255,255,.75) 50%, rgba(255,240,220,.15) 70%, transparent);filter:blur(18px);mix-blend-mode:screen}
 .streak{position:absolute;height:24px;width:915px}
 #fx{position:absolute;inset:0;width:1080px;height:1920px}
 #flash{background:#fff;opacity:0;mix-blend-mode:screen}
 #flashR{background:radial-gradient(circle at 50% 45%, rgba(255,240,200,1), rgba(255,80,60,.6) 45%, transparent 75%);opacity:0;mix-blend-mode:screen}
 
-/* ---------- seq 1 ---------- */
-#l1{left:452px;top:690px;width:177px;height:192px;box-shadow:0 30px 80px rgba(0,0,0,.6),0 0 90px rgba(255,140,110,.5)}
+/* seq 1 : Ligue 1 logo + 5eme journee (poster typography) */
+#l1{left:452px;top:640px;width:177px;height:192px;box-shadow:0 30px 80px rgba(0,0,0,.6),0 0 90px rgba(255,140,110,.5)}
 #l1 img{width:100%;height:100%;display:block}
-#j5{left:0;top:600px;width:1080px;text-align:center}
-.grad{background:linear-gradient(180deg,#E3101B 0%,#EE5A62 50%,#F7D3D6 100%);-webkit-background-clip:text;color:transparent}
-#j5 .num{font:900 420px/0.86 BC;letter-spacing:-4px;display:inline-block}
-#j5 .num sup{font-size:150px;vertical-align:top;position:relative;top:30px;margin-left:8px}
-#j5 .mask{overflow:hidden;height:110px;margin-top:22px}
-#j5 .jour{font:700 76px/110px MS;letter-spacing:26px;padding-left:26px;display:inline-block;color:var(--yellow)}
-#j5 .lig{margin-top:26px;display:inline-flex;align-items:center;gap:22px}
-#j5 .lig i{display:block;height:4px;width:110px;background:#fff;border-radius:2px}
-#j5 .lig span{font:600 46px/1 MS;letter-spacing:14px;color:#fff;padding-left:14px}
+#j5{left:0;top:900px;width:1080px;text-align:center}
+#j5 .mask{overflow:hidden;height:96px}
+#j5 .jour{font:600 64px/96px MS;letter-spacing:30px;padding-left:30px;display:inline-block;color:var(--yellow)}
+#j5 .jour sup{font-size:34px;letter-spacing:14px;vertical-align:top;position:relative;top:-6px}
+#j5 img{display:block;margin:34px auto 0;width:610px;height:16px}
 
-/* ---------- team in poster coordinates (1080 x 1320) ---------- */
+/* team : everything in poster coordinates (1080 x 1320) */
 #team{position:absolute;left:0;top:0;width:1080px;height:1320px;transform-origin:0 0}
 #team img{position:absolute;display:block}
-#ngImg{left:354px;top:121px;width:371px;height:407px}
-#legShade{position:absolute;left:-400px;top:860px;width:1880px;height:900px;background:linear-gradient(180deg, transparent 0%, rgba(14,2,3,.55) 22%, rgba(10,1,2,.88) 40%, #0a0102 60%)}
+#ngImg{left:332px;top:106px;width:416px;height:456px}
+#legShade{position:absolute;left:-400px;top:860px;width:1880px;height:900px;background:linear-gradient(180deg, transparent 0%, rgba(14,2,3,.5) 22%, rgba(10,1,2,.85) 42%, #0a0102 62%)}
+#pSph{left:71px;top:117px;width:164px;height:164px}
+#pBand{left:388px;top:0;width:305px;height:8px}
+#pL1{left:510px;top:0;width:59px;height:64px}
+#p5{left:400px;top:72px;width:280px;height:17px}
+#pDate{left:293px;top:1164px;width:145px;height:36px}
+#pClubs{left:472px;top:1147px;width:137px;height:70px}
+#pTime{left:640px;top:1164px;width:159px;height:36px}
 .ring{position:absolute;border-radius:50%;border:6px solid rgba(255,230,180,.9);box-shadow:0 0 40px rgba(255,180,120,.9), inset 0 0 40px rgba(255,180,120,.6);opacity:0}
-#ngSub{left:0;top:392px;width:1080px;text-align:center;font:600 36px/1 MS;letter-spacing:12px;color:#fff;padding-left:12px}
-#ngSub b{color:var(--yellow);font-weight:700}
 
-/* ---------- seq 3 ---------- */
-#splitL{background:linear-gradient(120deg, rgba(20,6,8,.93), rgba(80,4,10,.9));clip-path:polygon(0 0, 62% 0, 38% 100%, 0 100%)}
-#splitR{background:linear-gradient(300deg, rgba(30,70,215,.9), rgba(10,26,110,.9));clip-path:polygon(62% 0, 100% 0, 100% 100%, 38% 100%)}
-#bolt{left:0;top:0;width:1080px;height:1920px;overflow:visible}
+/* seq 3 : face to face */
 .crest{position:absolute;width:270px;height:300px}
 .crest img{width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 24px 40px rgba(0,0,0,.6))}
-#cL{left:90px;top:340px}
-#cR{left:720px;top:340px}
-#vs{left:390px;top:385px;width:300px;height:230px;text-align:center}
-#vs b{font:900 210px/1 BC;color:#fff;letter-spacing:-2px;display:inline-block;text-shadow:0 0 50px rgba(255,210,80,.8),0 10px 0 rgba(0,0,0,.35)}
-.tname{position:absolute;top:690px;width:420px;text-align:center}
-.tname .t1{font:900 92px/0.92 BC;display:block;color:#fff}
-.tname .t2{font:900 92px/0.92 BC;display:block;color:var(--yellow)}
-#nL{left:20px}#nR{left:640px}
-#vsTag{left:0;top:900px;width:1080px;text-align:center;font:600 34px/1 MS;letter-spacing:12px;color:#fff;padding-left:12px}
-#vsTag b{color:var(--yellow);font-weight:700}
+#cL{left:90px;top:360px}
+#cR{left:720px;top:360px}
+#vLine{left:85px;top:498px;width:910px;height:24px;transform:rotate(-70deg)}
+#vs{left:440px;top:440px;width:200px;text-align:center;font:800 110px/1 MS;color:var(--yellow);text-shadow:0 0 40px rgba(255,200,60,.7)}
+.tname{position:absolute;top:700px;width:440px;text-align:center}
+.tname span{display:block;font:800 64px/1.08 MS;color:#fff}
+.tname span+span{color:var(--yellow)}
+#nL{left:15px}#nR{left:625px}
+#vsTag{left:0;top:890px;width:1080px;text-align:center;font:600 34px/1 MS;letter-spacing:20px;padding-left:20px;color:var(--yellow)}
+#vsTag sup{font-size:20px;letter-spacing:8px;vertical-align:top;position:relative;top:-2px}
 
-/* ---------- seq 4 ---------- */
-#infoShade{background:linear-gradient(180deg, rgba(10,1,2,.45), rgba(10,1,2,.7))}
+/* seq 4 : infos, poster typography */
 #infoHead{left:0;top:300px;width:1080px;text-align:center}
 #infoHead img{width:186px;height:204px}
-.card{position:absolute;left:90px;width:900px;border-radius:30px;background:linear-gradient(135deg, rgba(20,40,140,.55), rgba(10,2,6,.55));
-  border:2px solid rgba(255,255,255,.2);box-shadow:0 30px 70px rgba(0,0,0,.4), inset 0 2px 0 rgba(255,255,255,.15);
-  display:flex;align-items:center;gap:40px;padding:0 46px;overflow:hidden}
-.card .bar{position:absolute;left:0;top:0;bottom:0;width:12px;background:var(--yellow)}
-.card .ico{width:150px;height:150px;flex:0 0 150px;position:relative}
-.card .ico svg{width:100%;height:100%;overflow:visible}
-.card .lbl{font:600 36px/1 MS;letter-spacing:9px;color:#fff;display:block;margin-bottom:14px}
-.card .big{font:800 76px/1 MS;color:var(--yellow);display:block;white-space:nowrap;letter-spacing:-1px}
-.card .big small{font-size:52px;color:#fff;margin-left:12px;font-weight:700}
-#c1{top:560px;height:230px}
-#c2{top:830px;height:270px}#c2 .big{font-size:128px}
-#c3{top:1140px;height:220px}#c3 .big{color:#fff}
+#infoBand{left:235px;top:540px;width:610px;height:16px}
+.row{position:absolute;left:150px;width:800px;height:200px;display:flex;align-items:center;gap:44px}
+.row .ico{width:120px;height:120px;flex:0 0 120px}
+.row .ico svg{width:100%;height:100%;overflow:visible}
+.row .lbl{font:500 40px/1.1 MS;color:#fff;display:block}
+.row .big{font:800 84px/1.05 MS;color:var(--yellow);display:block;white-space:nowrap}
+.row .big small{font-size:56px;color:#fff;font-weight:600;margin-left:10px}
+#r1{top:610px}#r2{top:850px}#r3{top:1090px}
+#r2 .big{font-size:120px}
+#r3 .big{color:#fff;font-size:76px}
 
-/* ---------- seq 5 : the poster ---------- */
-#fBand{left:235px;top:300px;width:610px;height:16px}
-#fL1{left:481px;top:262px;width:118px;height:128px;box-shadow:0 12px 30px rgba(0,0,0,.35)}
-#fL1 img{width:100%;height:100%;display:block}
-#f5{left:0;top:412px;width:1080px;text-align:center;font:600 34px/1 MS;letter-spacing:22px;padding-left:22px;color:var(--yellow)}
-#f5 sup{font-size:20px;letter-spacing:8px;vertical-align:top;position:relative;top:-2px}
-#fInfo{left:0;top:1335px;width:1080px;height:130px}
-#fL{position:absolute;right:672px;top:18px;text-align:right}
-#fR{position:absolute;left:680px;top:18px;text-align:left}
-#fL .a,#fR .a{font:500 40px/1.15 MS;color:#fff;white-space:nowrap}
-#fL .b{font:800 42px/1.15 MS;color:var(--yellow);white-space:nowrap}
-#fR .a b{font-weight:800;color:var(--yellow)}
-#fR .c{font:500 34px/1.3 MS;color:#fff;white-space:nowrap}
-#fCrests{position:absolute;left:414px;top:0;width:252px;height:130px;display:flex;align-items:center;justify-content:space-between}
-#fCrests img{height:118px;width:auto}
-#fCrests img+i{display:block}
-#fCrests i{width:2px;height:96px;background:linear-gradient(180deg,transparent,rgba(255,255,255,.8),transparent)}
-#slogan{left:90px;top:1488px;width:900px;height:86px;border-radius:16px;background:var(--yellow);display:flex;align-items:center;justify-content:center;box-shadow:0 18px 50px rgba(0,0,0,.45);overflow:hidden}
-#slogan span{font:900 60px/1 BC;color:#A00A12;white-space:nowrap;letter-spacing:1px}
-#slogan .sh{position:absolute;top:0;bottom:0;width:180px;left:-240px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.75),transparent);transform:skewX(-20deg)}
+/* seq 5 : slogan under the poster */
+#slogan{left:0;top:1650px;width:1080px;text-align:center;font:700 40px/1 MS;color:#fff;white-space:nowrap}
+#slogan b{color:var(--yellow);font-weight:800}
 </style>
 </head>
 <body>
@@ -123,42 +100,46 @@ body{font-family:MS,sans-serif;color:#fff;-webkit-font-smoothing:antialiased}
   <img class="sph" id="sphA" src="../assets/hd/sphere.png">
   <div class="full" id="bottomDark"></div>
 
-  <div class="full" id="split"><div class="full" id="splitL"></div><div class="full" id="splitR"></div></div>
-
   <div class="full" id="players">
     <div id="team">
+      <img id="pSph" src="../assets/poster/sphere.png">
       <img id="ngImg" src="../assets/poster/next-game.png">
       <img id="p1" src="../assets/poster/joueur-21-rouge.png">
       <img id="p3" src="../assets/poster/gardien-21.png">
       <img id="p4" src="../assets/poster/joueur-2-bleu.png">
       <img id="p2" src="../assets/poster/joueur-44-centre.png">
       <div id="legShade"></div>
+      <img id="pBand" src="../assets/poster/bande-tricolore.png">
+      <img id="pL1" src="../assets/poster/logo-ligue1-b.png">
+      <img id="p5" src="../assets/poster/5eme-journee.png">
+      <img id="pDate" src="../assets/poster/14-novembre.png">
+      <img id="pClubs" src="../assets/poster/logos-clubs.png">
+      <img id="pTime" src="../assets/poster/16h30.png">
     </div>
   </div>
   <div class="ring" id="ring1"></div>
+  <div class="full" id="dim"></div>
 
   <div class="full" id="info">
-    <div class="full" id="infoShade"></div>
     <div class="abs" id="infoHead"><img src="../assets/poster/next-game.png"></div>
-    <div class="card" id="c1"><div class="bar"></div>
-      <div class="ico" id="icoCal"><svg viewBox="0 0 170 170">
-        <rect x="14" y="26" width="142" height="132" rx="22" fill="#fff"/><rect x="14" y="26" width="142" height="44" rx="22" fill="#E3121B"/><rect x="14" y="52" width="142" height="18" fill="#E3121B"/>
-        <rect x="46" y="10" width="14" height="34" rx="7" fill="#FFE600"/><rect x="110" y="10" width="14" height="34" rx="7" fill="#FFE600"/>
-        <g id="calPage"><text x="85" y="141" text-anchor="middle" font-family="MS" font-weight="800" font-size="66" fill="#0B1A5C">14</text></g></svg></div>
+    <img class="abs" id="infoBand" src="../assets/hd/bande-tricolore.png">
+    <div class="row" id="r1">
+      <div class="ico" id="icoCal"><svg viewBox="0 0 120 120" fill="none" stroke="#fff" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="12" y="22" width="96" height="88" rx="14"/><path d="M12 50h96"/><path d="M38 10v22M82 10v22"/>
+        <g id="calPage"><text x="60" y="97" text-anchor="middle" font-family="MS" font-weight="800" font-size="40" fill="#FFE600" stroke="none">14</text></g></svg></div>
       <div><span class="lbl">SAMEDI</span><span class="big">14 NOVEMBRE</span></div>
     </div>
-    <div class="card" id="c2"><div class="bar"></div>
-      <div class="ico" id="icoClk"><svg viewBox="0 0 170 170">
-        <circle cx="85" cy="85" r="74" fill="#fff"/><circle cx="85" cy="85" r="74" fill="none" stroke="#FFE600" stroke-width="10"/>
-        <g fill="#0B1A5C"><rect x="82" y="20" width="6" height="16" rx="3"/><rect x="82" y="134" width="6" height="16" rx="3"/><rect x="20" y="82" width="16" height="6" rx="3"/><rect x="134" y="82" width="16" height="6" rx="3"/></g>
-        <g id="hHour"><rect x="80" y="44" width="10" height="46" rx="5" fill="#0B1A5C"/></g><g id="hMin"><rect x="82" y="26" width="6" height="64" rx="3" fill="#E3121B"/></g>
-        <circle cx="85" cy="85" r="9" fill="#0B1A5C"/></svg></div>
-      <div><span class="lbl">COUP D'ENVOI</span><span class="big">16H30<small>GMT</small></span></div>
+    <div class="row" id="r2">
+      <div class="ico" id="icoClk"><svg viewBox="0 0 120 120" fill="none" stroke="#fff" stroke-width="7" stroke-linecap="round">
+        <circle cx="60" cy="60" r="50"/>
+        <g id="hHour"><path d="M60 60V34"/></g><g id="hMin"><path d="M60 60V20" stroke="#FFE600"/></g></svg></div>
+      <div><span class="big">16H30<small>GMT</small></span></div>
     </div>
-    <div class="card" id="c3"><div class="bar"></div>
-      <div class="ico" id="icoPin"><svg viewBox="0 0 170 170"><ellipse id="pinShadow" cx="85" cy="158" rx="40" ry="9" fill="rgba(0,0,0,.35)"/>
-        <g id="pinG"><path d="M85 150 C 62 118 32 92 32 62 A53 53 0 0 1 138 62 C 138 92 108 118 85 150 Z" fill="#E3121B" stroke="#fff" stroke-width="6"/><circle cx="85" cy="62" r="20" fill="#fff"/></g></svg></div>
-      <div><span class="lbl">STADE</span><span class="big">LAT DIOR</span></div>
+    <div class="row" id="r3">
+      <div class="ico" id="icoPin"><svg viewBox="0 0 120 120" fill="none" stroke="#fff" stroke-width="7" stroke-linejoin="round">
+        <ellipse id="pinShadow" cx="60" cy="112" rx="26" ry="5" fill="rgba(255,255,255,.25)" stroke="none"/>
+        <g id="pinG"><path d="M60 104C44 82 24 64 24 42a36 36 0 0 1 72 0c0 22-20 40-36 62z"/><circle cx="60" cy="42" r="12" stroke="#FFE600"/></g></svg></div>
+      <div><span class="big">STADE LAT DIOR</span></div>
     </div>
   </div>
 
@@ -171,32 +152,19 @@ body{font-family:MS,sans-serif;color:#fff;-webkit-font-smoothing:antialiased}
   <img class="streak" id="st3" src="../assets/hd/bande-tricolore.png" style="top:860px">
   <div class="abs" id="l1"><img src="../assets/hd/logo-ligue1-box.png"></div>
   <div class="abs" id="j5">
-    <div class="num grad" id="j5num">5<sup>ÈME</sup></div>
-    <div class="mask"><div class="jour" id="j5jour">JOURNÉE</div></div>
-    <div class="lig" id="j5lig"><i></i><span>LIGUE 1</span><i></i></div>
+    <div class="mask"><div class="jour" id="j5jour">5<sup>ÈME</sup> JOURNÉE</div></div>
+    <img id="j5band" src="../assets/hd/bande-tricolore.png">
   </div>
 
-  <div class="abs" id="ngSub">THE BATTLE <b>CONTINUES</b></div>
-
-  <svg class="abs" id="bolt" viewBox="0 0 1080 1920"><defs><filter id="bg" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="9"/></filter></defs>
-    <path id="boltGlow" fill="none" stroke="#FFD27A" stroke-width="26" stroke-linejoin="round" filter="url(#bg)" opacity=".9"/>
-    <path id="boltCore" fill="none" stroke="#fff" stroke-width="8" stroke-linejoin="round"/></svg>
+  <img class="abs" id="vLine" src="../assets/hd/bande-tricolore.png">
   <div class="crest" id="cL"><img src="../assets/hd/logo-diambars.png"></div>
   <div class="crest" id="cR"><img src="../assets/hd/logo-mbour.png"></div>
-  <div class="abs" id="vs"><b>VS</b></div>
-  <div class="tname" id="nL"><span class="t1">DIAMBARS</span><span class="t2">FC</span></div>
-  <div class="tname" id="nR"><span class="t1">STADE DE</span><span class="t2">MBOUR</span></div>
-  <div class="abs" id="vsTag">5ÈME JOURNÉE · <b>LIGUE 1</b></div>
+  <div class="abs" id="vs">VS</div>
+  <div class="tname" id="nL"><span>DIAMBARS</span><span>FC</span></div>
+  <div class="tname" id="nR"><span>STADE DE</span><span>MBOUR</span></div>
+  <div class="abs" id="vsTag">5<sup>ÈME</sup> JOURNÉE</div>
 
-  <img class="abs" id="fBand" src="../assets/hd/bande-tricolore.png">
-  <div class="abs" id="fL1"><img src="../assets/hd/logo-ligue1-box.png"></div>
-  <div class="abs" id="f5">5<sup>ÈME</sup> JOURNÉE</div>
-  <div class="abs" id="fInfo">
-    <div id="fL"><div class="a">SAMEDI</div><div class="b">14 NOVEMBRE</div></div>
-    <div id="fCrests"><img id="fcL" src="../assets/hd/logo-diambars.png"><i></i><img id="fcR" src="../assets/hd/logo-mbour.png"></div>
-    <div id="fR"><div class="a"><b>16H30</b> GMT</div><div class="c">STADE LAT DIOR</div></div>
-  </div>
-  <div class="abs" id="slogan"><span>TOUS DERRIÈRE LE STADE DE MBOUR !</span><div class="sh"></div></div>
+  <div class="abs" id="slogan">TOUS DERRIÈRE LE <b>STADE DE MBOUR !</b></div>
 
   <canvas id="fx" width="1080" height="1920"></canvas>
  </div>
@@ -209,19 +177,15 @@ body{font-family:MS,sans-serif;color:#fff;-webkit-font-smoothing:antialiased}
 <script>
 function hash(n){ n=(n<<13)^n; return 1.0-((n*(n*n*15731+789221)+1376312589)&0x7fffffff)/1073741824.0; }
 function rnd(i){ return (hash(i*7919+17)+1)/2; }
-function mulberry(a){return function(){a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
 
-/* exact positions measured on the poster (template matching) */
+/* exact positions measured on the poster */
 const BOX={p1:[145,404],p2:[314,350],p3:[507,369],p4:[720,363]};
 for(const k in BOX){ const e=document.getElementById(k); e.style.left=BOX[k][0]+'px'; e.style.top=BOX[k][1]+'px'; }
 function shot(px,py,s,cy){ return {x:540-px*s, y:cy-py*s, scale:s}; }
 const GROUP=shot(545,760,1.12,1180);
 const VSHOT=shot(545,760,0.98,1420);
-const FINAL=shot(545,760,1.0,1100);
-
-function boltPath(seed,x0,y0,x1,y1,segs,amp){const r=mulberry(seed);let d=`M${x0} ${y0}`;for(let i=1;i<segs;i++){const f=i/segs;d+=` L${(x0+(x1-x0)*f+(r()-.5)*amp).toFixed(1)} ${(y0+(y1-y0)*f+(r()-.5)*amp*.3).toFixed(1)}`;}return d+` L${x1} ${y1}`;}
-const BP=boltPath(42,600,240,480,1560,22,120);
-document.getElementById('boltGlow').setAttribute('d',BP); document.getElementById('boltCore').setAttribute('d',BP);
+const FINAL={x:540-540*1.2, y:0, scale:1.2};
+const POSTER_ONLY=['#pSph','#pBand','#pL1','#p5','#pDate','#pClubs','#pTime'];
 
 const cv=document.getElementById('fx'), cx=cv.getContext('2d');
 const FX={embers:0,dust:.4,smoke:.5,sparkT:-10,sparkX:540,sparkY:780,sparks2T:-10,s2x:540,s2y:500};
@@ -244,14 +208,14 @@ function drawFX(t){
 const tl=gsap.timeline({paused:true});
 const E={in:'expo.out',out:'expo.in',io:'power3.inOut',back:'back.out(1.6)'};
 
-gsap.set(['#split','#info','#ngSub','#cL','#cR','#vs','#nL','#nR','#vsTag','#fBand','#fL1','#f5','#fInfo','#slogan','#l1','#j5','#bolt','#players'],{autoAlpha:0});
-gsap.set(['#p1','#p2','#p3','#p4','#ngImg'],{autoAlpha:0});
+gsap.set(['#info','#cL','#cR','#vs','#nL','#nR','#vsTag','#vLine','#slogan','#l1','#j5','#players'],{autoAlpha:0});
+gsap.set(['#p1','#p2','#p3','#p4','#ngImg',...POSTER_ONLY],{autoAlpha:0});
 gsap.set('#dark',{opacity:.86});
 gsap.set('.streak',{x:-1000,opacity:0});
 gsap.set('#beam',{rotation:28});
-gsap.set('#team',shot(250,620,1.9,1000));
+gsap.set('#team',shot(246,620,1.75,1010));
 
-/* background always alive: fond drifts, spheres float slowly */
+/* background always alive */
 tl.fromTo('#fond',{x:0,y:0,scale:1.0},{x:-40,y:-30,scale:1.06,duration:30,ease:'none'},0);
 tl.fromTo('#sphA',{x:0,y:0,rotation:0},{x:60,y:-140,rotation:40,duration:30,ease:'none'},0);
 tl.fromTo('#sphB',{x:0,y:0,rotation:0},{x:-70,y:-120,rotation:-30,duration:30,ease:'none'},0);
@@ -266,18 +230,17 @@ tl.to('#dark',{opacity:.72,duration:1.2,ease:'none'},0);
 tl.fromTo('#beam',{x:-200},{x:1900,duration:1.1,ease:'power2.inOut'},0.85);
 tl.fromTo('#l1',{autoAlpha:0,scale:1.6,filter:'blur(16px)'},{autoAlpha:1,scale:1,filter:'blur(0px)',duration:.45,ease:E.in},1.2);
 tl.to('#flashR',{opacity:.55,duration:.06},1.2).to('#flashR',{opacity:0,duration:.5},1.26);
-tl.to('#l1',{scale:1.06,duration:.8,ease:'none'},1.65);
-tl.to('#l1',{scale:2.6,filter:'blur(18px)',autoAlpha:0,duration:.28,ease:E.out},2.05);
+tl.to('#l1',{scale:1.05,duration:1.0,ease:'none'},1.65);
+tl.to('#l1',{y:-60,duration:.5,ease:E.in},2.25);
 tl.set('#j5',{autoAlpha:1},2.25);
-tl.fromTo('#j5num',{scale:2.4,filter:'blur(20px)',opacity:0},{scale:1,filter:'blur(0px)',opacity:1,duration:.32,ease:E.in},2.25);
-tl.to('#flash',{opacity:.6,duration:.04},2.3).to('#flash',{opacity:0,duration:.35},2.34);
-tl.to('#dark',{opacity:.4,duration:.4},2.3);
-tl.fromTo('#j5jour',{yPercent:110},{yPercent:0,duration:.42,ease:E.in},2.5);
-tl.fromTo('#j5lig',{scaleX:0,opacity:0},{scaleX:1,opacity:1,duration:.4,ease:E.in},2.78);
-tl.fromTo('#j5lig span',{letterSpacing:'0px'},{letterSpacing:'14px',duration:1,ease:E.in},2.78);
-tl.fromTo('#j5',{scale:1},{scale:1.07,duration:1.3,ease:'none'},2.4);
+tl.fromTo('#j5jour',{yPercent:110},{yPercent:0,duration:.42,ease:E.in},2.3);
+tl.fromTo('#j5jour',{letterSpacing:'60px'},{letterSpacing:'30px',duration:1.2,ease:E.in},2.3);
+tl.to('#flash',{opacity:.55,duration:.04},2.3).to('#flash',{opacity:0,duration:.35},2.34);
+tl.to('#dark',{opacity:.45,duration:.4},2.3);
+tl.fromTo('#j5band',{scaleX:0,opacity:0},{scaleX:1,opacity:1,duration:.45,ease:E.in},2.7);
+tl.fromTo('#j5',{scale:1},{scale:1.05,duration:1.3,ease:'none'},2.4);
 tl.to(FX,{embers:.6,duration:1},2.3);
-tl.to('#j5',{scale:2.4,filter:'blur(16px)',autoAlpha:0,duration:.32,ease:E.out},3.68);
+tl.to(['#j5','#l1'],{scale:2.4,filter:'blur(16px)',autoAlpha:0,duration:.32,ease:E.out},3.68);
 tl.to('#dark',{opacity:0,duration:.3,ease:E.out},3.7);
 
 /* SEQ 2 : 4-11 the camera meets each player */
@@ -300,26 +263,19 @@ STOPS.forEach(([p,t,a,b],i)=>{
 tl.set(FX,{sparkT:7.2,sparkX:540,sparkY:900},7.1);
 tl.fromTo('#ring1',{left:290,top:600,width:500,height:500,opacity:.9,scale:.6},{scale:2.4,opacity:0,duration:.9,ease:E.in,immediateRender:false},7.2);
 tl.to('#flash',{opacity:.5,duration:.04},7.2).to('#flash',{opacity:0,duration:.4},7.24);
-/* pull back to the poster layout, NEXT GAME rises behind the players */
 tl.to('#team',{...GROUP,duration:.6,ease:'expo.inOut'},8.0);
 tl.to('#team',{...shot(545,760,1.16,1180),duration:2.15,ease:'none'},8.6);
 tl.set('#ngImg',{autoAlpha:1},8.3);
 tl.fromTo('#ngImg',{clipPath:'inset(100% 0 0 0)',y:60},{clipPath:'inset(0% 0 0 0)',y:0,duration:.55,ease:E.in},8.3);
 tl.to('#flashR',{opacity:.5,duration:.05},8.45).to('#flashR',{opacity:0,duration:.4},8.5);
-tl.set('#ngSub',{autoAlpha:1},9.0);
-tl.fromTo('#ngSub',{letterSpacing:'36px',opacity:0,filter:'blur(8px)'},{letterSpacing:'12px',opacity:1,filter:'blur(0px)',duration:.6,ease:E.in},9.0);
-tl.to('#ngSub',{y:-120,filter:'blur(12px)',autoAlpha:0,duration:.28,ease:E.out},10.72);
-tl.to('#ngImg',{autoAlpha:0,duration:.3,ease:E.out},10.72);
+tl.to('#ngImg',{autoAlpha:0,filter:'blur(12px)',duration:.3,ease:E.out},10.72);
 tl.to('#team',{...VSHOT,filter:'blur(4px) brightness(.5)',duration:.55,ease:E.io},10.75);
 
-/* SEQ 3 : 11-18 face to face */
-tl.set('#bolt',{autoAlpha:1},10.98);
-tl.fromTo(['#boltCore','#boltGlow'],{strokeDasharray:2200,strokeDashoffset:2200},{strokeDashoffset:0,duration:.18,ease:'power2.in'},10.98);
+/* SEQ 3 : 11-18 face to face, the tricolour band is the light line */
+tl.set('#vLine',{autoAlpha:1},10.98);
+tl.fromTo('#vLine',{scaleX:0},{scaleX:1,duration:.22,ease:'power2.in'},10.98);
 tl.to('#flash',{opacity:.85,duration:.04},11.12).to('#flash',{opacity:0,duration:.4},11.16);
-tl.set('#split',{autoAlpha:1},11.12);
-tl.fromTo('#splitL',{xPercent:-100},{xPercent:0,duration:.45,ease:E.in},11.14);
-tl.fromTo('#splitR',{xPercent:100},{xPercent:0,duration:.45,ease:E.in},11.14);
-tl.to('#bolt',{autoAlpha:0,duration:.35},11.25);
+tl.to('#dim',{opacity:.35,duration:.5},11.1);
 tl.fromTo('#world',{scale:1.06},{scale:1.0,duration:.5,ease:E.in},11.1);
 tl.to('#world',{scale:1.04,duration:6.4,ease:'none'},11.6);
 tl.fromTo('#cL',{autoAlpha:0,x:-520,rotation:-14,filter:'blur(14px)'},{autoAlpha:1,x:0,rotation:0,filter:'blur(0px)',duration:.5,ease:E.in},11.35);
@@ -333,84 +289,81 @@ tl.fromTo('#nL',{autoAlpha:0,x:-600,filter:'blur(12px)'},{autoAlpha:1,x:0,filter
 tl.fromTo('#nR',{autoAlpha:0,x:600,filter:'blur(12px)'},{autoAlpha:1,x:0,filter:'blur(0px)',duration:.5,ease:E.in},12.7);
 tl.to('#cL',{x:24,duration:4.8,ease:'none'},12.4);
 tl.to('#cR',{x:-24,duration:4.8,ease:'none'},12.4);
-tl.to('#nL',{x:20,duration:4.4,ease:'none'},12.95);
-tl.to('#nR',{x:-20,duration:4.2,ease:'none'},13.2);
+tl.to('#nL',{x:16,duration:4.4,ease:'none'},12.95);
+tl.to('#nR',{x:-16,duration:4.2,ease:'none'},13.2);
 tl.set('#vsTag',{autoAlpha:1},13.4);
-tl.fromTo('#vsTag',{opacity:0,y:30,filter:'blur(8px)'},{opacity:1,y:0,filter:'blur(0px)',duration:.5,ease:E.in},13.4);
+tl.fromTo('#vsTag',{opacity:0,letterSpacing:'44px'},{opacity:1,letterSpacing:'20px',duration:.6,ease:E.in},13.4);
 tl.to('#vs',{scale:1.12,duration:1.6,ease:'sine.inOut'},14.2);
-tl.to('#vs b',{textShadow:'0 0 90px rgba(255,210,80,1),0 10px 0 rgba(0,0,0,.35)',duration:1.6,ease:'sine.inOut'},14.2);
 tl.to('#team',{filter:'blur(2px) brightness(.7)',y:VSHOT.y-40,duration:3,ease:'sine.inOut'},14.2);
-tl.to('#splitL',{clipPath:'polygon(0 0, 58% 0, 42% 100%, 0 100%)',duration:3,ease:'sine.inOut'},14.5);
-tl.to('#splitR',{clipPath:'polygon(58% 0, 100% 0, 100% 100%, 42% 100%)',duration:3,ease:'sine.inOut'},14.5);
-tl.fromTo('#vs',{rotation:0},{rotation:-4,duration:2,ease:'sine.inOut'},15.8);
+tl.fromTo('#vLine',{rotation:-70},{rotation:-64,duration:3.5,ease:'sine.inOut'},14.0);
 tl.to(['#nL','#cL'],{x:-700,filter:'blur(14px)',duration:.32,ease:E.out},17.6);
 tl.to(['#nR','#cR'],{x:700,filter:'blur(14px)',duration:.32,ease:E.out},17.6);
 tl.to(['#vs','#vsTag'],{scale:2.2,autoAlpha:0,filter:'blur(14px)',duration:.3,ease:E.out},17.62);
-tl.to('#splitR',{clipPath:'polygon(-60% 0, 100% 0, 100% 100%, -60% 100%)',duration:.32,ease:E.out},17.66);
+tl.to('#vLine',{scaleX:3,autoAlpha:0,duration:.32,ease:E.out},17.62);
 
-/* SEQ 4 : 18-25 match info, on the poster background */
+/* SEQ 4 : 18-25 infos */
 tl.set('#info',{autoAlpha:1},17.98);
-tl.set(['#players','#split','#nL','#nR','#cL','#cR','#vs','#vsTag'],{autoAlpha:0},17.99);
+tl.set(['#players','#nL','#nR','#cL','#cR','#vs','#vsTag','#vLine'],{autoAlpha:0},17.99);
+tl.to('#dim',{opacity:.4,duration:.3},17.9);
 tl.to('#flash',{opacity:.55,duration:.04},18.0).to('#flash',{opacity:0,duration:.35},18.04);
 tl.fromTo('#world',{scale:1.08},{scale:1.0,duration:.5,ease:E.in},18.0);
 tl.to('#world',{scale:1.035,duration:6.4,ease:'none'},18.5);
 tl.to(FX,{embers:.45,smoke:.25,duration:.5},18);
 tl.fromTo('#infoHead',{y:-60,autoAlpha:0,clipPath:'inset(100% 0 0 0)'},{y:0,autoAlpha:1,clipPath:'inset(0% 0 0 0)',duration:.5,ease:E.in},18.1);
-[['#c1',18.45],['#c2',19.95],['#c3',21.45]].forEach(([c,t],i)=>{
-  tl.fromTo(c,{autoAlpha:0,x:i%2?260:-260,rotationY:i%2?-25:25,filter:'blur(12px)',transformPerspective:1400},{autoAlpha:1,x:0,rotationY:0,filter:'blur(0px)',duration:.5,ease:E.in},t);
-  tl.fromTo(c+' .bar',{scaleY:0,transformOrigin:'50% 0%'},{scaleY:1,duration:.4,ease:E.in},t+.1);
-  tl.fromTo(c+' .big',{yPercent:60,opacity:0,filter:'blur(8px)'},{yPercent:0,opacity:1,filter:'blur(0px)',duration:.4,ease:E.in},t+.18);
-  tl.fromTo(c+' .lbl',{opacity:0,letterSpacing:'22px'},{opacity:1,letterSpacing:'9px',duration:.5,ease:E.in},t+.12);
-  tl.fromTo(c,{scale:1},{scale:1.02,duration:1.2,ease:'none'},t+.5);
+tl.fromTo('#infoBand',{scaleX:0},{scaleX:1,duration:.45,ease:E.in},18.3);
+[['#r1',18.45],['#r2',19.95],['#r3',21.45]].forEach(([r,t],i)=>{
+  tl.fromTo(r,{autoAlpha:0,x:i%2?200:-200,filter:'blur(12px)'},{autoAlpha:1,x:0,filter:'blur(0px)',duration:.5,ease:E.in},t);
+  tl.fromTo(r+' .big',{yPercent:60,opacity:0},{yPercent:0,opacity:1,duration:.4,ease:E.in},t+.15);
+  tl.fromTo(r,{scale:1},{scale:1.02,duration:1.2,ease:'none'},t+.5);
 });
 tl.fromTo('#icoCal',{rotation:-25,scale:.4},{rotation:0,scale:1,duration:.5,ease:E.back},18.55);
-tl.fromTo('#calPage',{scaleY:0,transformOrigin:'85px 100px'},{scaleY:1,duration:.35,ease:E.in},18.85);
+tl.fromTo('#calPage',{scaleY:0,transformOrigin:'60px 85px'},{scaleY:1,duration:.35,ease:E.in},18.85);
 tl.fromTo('#icoClk',{scale:.4,rotation:40},{scale:1,rotation:0,duration:.5,ease:E.back},20.05);
-tl.fromTo('#hMin',{rotation:0,svgOrigin:'85 85'},{rotation:180+720,svgOrigin:'85 85',duration:1.4,ease:'power3.out'},20.1);
-tl.fromTo('#hHour',{rotation:0,svgOrigin:'85 85'},{rotation:135+360,svgOrigin:'85 85',duration:1.4,ease:'power3.out'},20.1);
-tl.fromTo('#pinG',{y:-140,opacity:0},{y:0,opacity:1,duration:.45,ease:'bounce.out'},21.55);
-tl.fromTo('#pinShadow',{scale:.2,transformOrigin:'85px 158px',opacity:0},{scale:1,opacity:1,duration:.45,ease:E.in},21.55);
-tl.to('#c1 .big',{textShadow:'0 0 40px rgba(255,230,0,.7)',duration:.5,yoyo:true,repeat:1,ease:'sine.inOut'},22.5);
-tl.to('#c2 .big',{textShadow:'0 0 50px rgba(255,230,0,.8)',duration:.5,yoyo:true,repeat:1,ease:'sine.inOut'},23.1);
-tl.to(['#c1','#c2','#c3'],{y:'-=18',duration:2.4,ease:'sine.inOut'},22.2);
-tl.to(['#c1','#c3'],{y:(i)=>i?-300:300,scale:.6,filter:'blur(10px)',autoAlpha:0,duration:.3,ease:E.out},24.62);
-tl.to(['#c2','#infoHead'],{scale:.4,filter:'blur(14px)',autoAlpha:0,duration:.3,ease:E.out},24.66);
+tl.fromTo('#hMin',{rotation:0,svgOrigin:'60 60'},{rotation:180+720,svgOrigin:'60 60',duration:1.4,ease:'power3.out'},20.1);
+tl.fromTo('#hHour',{rotation:0,svgOrigin:'60 60'},{rotation:135+360,svgOrigin:'60 60',duration:1.4,ease:'power3.out'},20.1);
+tl.fromTo('#pinG',{y:-100,opacity:0},{y:0,opacity:1,duration:.45,ease:'bounce.out'},21.55);
+tl.fromTo('#pinShadow',{scale:.2,transformOrigin:'60px 112px',opacity:0},{scale:1,opacity:1,duration:.45,ease:E.in},21.55);
+tl.to('#r1 .big',{textShadow:'0 0 40px rgba(255,230,0,.7)',duration:.5,yoyo:true,repeat:1,ease:'sine.inOut'},22.5);
+tl.to('#r2 .big',{textShadow:'0 0 50px rgba(255,230,0,.8)',duration:.5,yoyo:true,repeat:1,ease:'sine.inOut'},23.1);
+tl.to(['#r1','#r2','#r3'],{y:'-=16',duration:2.4,ease:'sine.inOut'},22.2);
+tl.to(['#r1','#r3'],{y:(i)=>i?-300:300,scale:.6,filter:'blur(10px)',autoAlpha:0,duration:.3,ease:E.out},24.62);
+tl.to(['#r2','#infoHead','#infoBand'],{scale:.4,filter:'blur(14px)',autoAlpha:0,duration:.3,ease:E.out},24.66);
 
-/* SEQ 5 : 25-30 the poster, rebuilt piece by piece */
+/* SEQ 5 : 25-30 the poster, rebuilt with its own elements and layout */
 tl.set('#info',{autoAlpha:0},24.98);
+tl.to('#dim',{opacity:0,duration:.3},24.9);
+tl.set('#sphA',{autoAlpha:0},24.98);
 tl.set('#players',{autoAlpha:1},24.98);
 tl.set('#team',{filter:'blur(0px) brightness(1)'},24.98);
-tl.set('#ngImg',{autoAlpha:1,clipPath:'inset(0% 0 0 0)'},24.98);
+tl.set('#ngImg',{autoAlpha:1,clipPath:'inset(0% 0 0 0)',filter:'blur(0px)'},24.98);
 tl.to('#flash',{opacity:.9,duration:.04},25.0).to('#flash',{opacity:0,duration:.6},25.04);
-tl.fromTo('#world',{scale:1.1},{scale:1.0,duration:.7,ease:E.in},25.0);
-tl.to('#world',{scale:1.03,duration:4.3,ease:'none'},25.7);
+tl.fromTo('#world',{scale:1.08},{scale:1.0,duration:.7,ease:E.in},25.0);
 tl.to(FX,{embers:1,smoke:.6,duration:.4},25);
-tl.fromTo('#team',{...shot(545,760,1.3,1150)},{...FINAL,duration:.7,ease:E.in,immediateRender:false},25.0);
+tl.fromTo('#team',{x:540-540*1.35,y:-60,scale:1.35},{...FINAL,duration:.7,ease:E.in,immediateRender:false},25.0);
 tl.fromTo('#ngImg',{y:-200,filter:'blur(14px)'},{y:0,filter:'blur(0px)',duration:.6,ease:E.in,immediateRender:false},25.0);
 tl.fromTo('#p1',{x:-260,filter:'blur(12px)'},{x:0,filter:'blur(0px)',duration:.55,ease:E.in,immediateRender:false},25.05);
 tl.fromTo('#p4',{x:260,filter:'blur(12px)'},{x:0,filter:'blur(0px)',duration:.55,ease:E.in,immediateRender:false},25.05);
 tl.fromTo('#p3',{y:-160,filter:'blur(12px)'},{y:0,filter:'blur(0px)',duration:.55,ease:E.in,immediateRender:false},25.1);
 tl.fromTo('#p2',{y:160,filter:'blur(12px)'},{y:0,filter:'blur(0px)',duration:.6,ease:E.in,immediateRender:false},25.15);
-tl.fromTo('#fBand',{autoAlpha:0,scaleX:0},{autoAlpha:1,scaleX:1,duration:.45,ease:E.in},25.35);
-tl.fromTo('#fL1',{autoAlpha:0,y:-80},{autoAlpha:1,y:0,duration:.45,ease:E.in},25.45);
-tl.fromTo('#f5',{autoAlpha:0,letterSpacing:'50px'},{autoAlpha:1,letterSpacing:'22px',duration:.5,ease:E.in},25.55);
-tl.set('#fInfo',{autoAlpha:1},25.8);
-tl.fromTo('#fCrests',{scale:0,opacity:0},{scale:1,opacity:1,duration:.45,ease:E.back},25.8);
-tl.fromTo('#fL',{x:-200,opacity:0,filter:'blur(10px)'},{x:0,opacity:1,filter:'blur(0px)',duration:.45,ease:E.in},26.05);
-tl.fromTo('#fR',{x:200,opacity:0,filter:'blur(10px)'},{x:0,opacity:1,filter:'blur(0px)',duration:.45,ease:E.in},26.3);
-tl.fromTo('#slogan',{autoAlpha:0,scaleX:0},{autoAlpha:1,scaleX:1,duration:.4,ease:E.in},26.9);
-tl.fromTo('#slogan span',{yPercent:110},{yPercent:0,duration:.4,ease:E.in},27.05);
-tl.to('#slogan .sh',{left:1150,duration:.7,ease:'power2.inOut'},27.6);
-tl.to('#team',{...shot(545,760,1.02,1100),duration:4.3,ease:'none'},25.7);
+tl.fromTo('#pSph',{autoAlpha:0,scale:.3},{autoAlpha:1,scale:1,duration:.5,ease:E.in},25.2);
+tl.fromTo('#pBand',{autoAlpha:0,scaleX:0},{autoAlpha:1,scaleX:1,duration:.45,ease:E.in},25.35);
+tl.fromTo('#pL1',{autoAlpha:0,y:-70},{autoAlpha:1,y:0,duration:.45,ease:E.in},25.45);
+tl.fromTo('#p5',{autoAlpha:0,clipPath:'inset(0 50% 0 50%)'},{autoAlpha:1,clipPath:'inset(0 0% 0 0%)',duration:.5,ease:E.in},25.6);
+tl.fromTo('#pClubs',{autoAlpha:0,scale:0},{autoAlpha:1,scale:1,duration:.45,ease:E.back},25.85);
+tl.fromTo('#pDate',{autoAlpha:0,x:-120},{autoAlpha:1,x:0,duration:.45,ease:E.in},26.05);
+tl.fromTo('#pTime',{autoAlpha:0,x:120},{autoAlpha:1,x:0,duration:.45,ease:E.in},26.3);
+tl.set('#slogan',{autoAlpha:1},26.9);
+tl.fromTo('#slogan',{opacity:0,y:40,filter:'blur(10px)'},{opacity:1,y:0,filter:'blur(0px)',duration:.5,ease:E.in},26.9);
+tl.to('#team',{x:540-540*1.23,y:0,scale:1.23,duration:4.3,ease:'none'},25.7);
 tl.to('#flashR',{opacity:.8,duration:.04},28.5).to('#flashR',{opacity:0,duration:.7},28.54);
-tl.set(FX,{sparkT:28.5,sparkX:540,sparkY:1530},28.4);
+tl.set(FX,{sparkT:28.5,sparkX:540,sparkY:1670},28.4);
 tl.fromTo('#slogan',{scale:1},{scale:1.06,duration:.12,yoyo:true,repeat:1,ease:'power2.out'},28.5);
-tl.to('#world',{x:7,y:-4,duration:.04,yoyo:true,repeat:5,ease:'none'},28.5);
+tl.to('#world',{x:7,duration:.04,yoyo:true,repeat:5,ease:'none'},28.5);
 tl.set({},{},30);
 
 window.DURATION=30;
 window.seek=function(t){tl.seek(t,false);drawFX(t);};
-window.__ready=(async()=>{await document.fonts.ready;await Promise.all([...document.images].map(i=>i.complete?1:new Promise(r=>{i.onload=i.onerror=r;})));await document.fonts.load('900 100px BC');await document.fonts.load('800 50px MS');await document.fonts.load('600 50px MS');window.seek(0);return true;})();
+window.__ready=(async()=>{await document.fonts.ready;await Promise.all([...document.images].map(i=>i.complete?1:new Promise(r=>{i.onload=i.onerror=r;})));await document.fonts.load('800 50px MS');await document.fonts.load('600 50px MS');await document.fonts.load('500 50px MS');window.seek(0);return true;})();
 </script>
 </body>
 </html>
