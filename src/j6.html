@@ -97,7 +97,7 @@ body{font-family:MS,sans-serif;color:#fff;-webkit-font-smoothing:antialiased}
 #r2 .big{font-size:120px}
 #r3 .big{color:#fff;font-size:70px}
 
-#slogan{left:0;top:1500px;width:1080px;text-align:center;font:700 40px/1 MS;color:#fff;white-space:nowrap}
+#slogan{left:0;top:1540px;width:1080px;text-align:center;font:700 40px/1 MS;color:#fff;white-space:nowrap}
 #slogan b{color:var(--yellow);font-weight:800}
 </style>
 </head>
@@ -354,13 +354,13 @@ tl.fromTo('#nuTxt',{clipPath:'inset(0 100% 0 0)'},{clipPath:'inset(0 0% 0 0)',du
 tl.fromTo('#pBand',{autoAlpha:0,scaleX:0},{autoAlpha:1,scaleX:1,duration:.4,ease:E.in},K(56)+.3);
 tl.fromTo('#pL1',{autoAlpha:0,y:-70},{autoAlpha:1,y:0,duration:.4,ease:E.in},K(56)+.4);
 tl.fromTo('#p6',{autoAlpha:0,clipPath:'inset(0 50% 0 50%)'},{autoAlpha:1,clipPath:'inset(0 0% 0 0%)',duration:.45,ease:E.in},K(57)+.1);
-tl.fromTo('#pInfo',{autoAlpha:0,y:40,filter:'blur(8px)'},{autoAlpha:1,y:0,filter:'blur(0px)',duration:.45,ease:E.in},K(58));
+tl.fromTo('#pInfo',{autoAlpha:0,y:120,filter:'blur(8px)'},{autoAlpha:1,y:80,filter:'blur(0px)',duration:.45,ease:E.in},K(58));
 tl.fromTo('#pCrests',{scale:0},{scale:1,duration:.45,ease:E.back},K(58));
 tl.set('#slogan',{autoAlpha:1},K(59));
 tl.fromTo('#slogan',{opacity:0,y:40,filter:'blur(10px)'},{opacity:1,y:0,filter:'blur(0px)',duration:.45,ease:E.in},K(59));
 tl.to('#team',{x:540-540*1.06,y:0,scale:1.06,duration:30-K(56)-.7,ease:'none'},K(56)+.7);
 flash(K(64),.8,.7,'#flashR');
-tl.set(FX,{sparkT:K(64),sparkX:540,sparkY:1520},K(64)-.1);
+tl.set(FX,{sparkT:K(64),sparkX:540,sparkY:1560},K(64)-.1);
 tl.fromTo('#slogan',{scale:1},{scale:1.06,duration:.12,yoyo:true,repeat:1,ease:'power2.out'},K(64));
 tl.to('#world',{x:7,duration:.04,yoyo:true,repeat:5,ease:'none'},K(64));
 tl.set({},{},30);
