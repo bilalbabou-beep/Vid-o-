@@ -1,0 +1,50 @@
+{
+ "joueur-gauche.webp": {
+  "score": 0.93,
+  "scale": 1.0,
+  "x": 321,
+  "y": 192,
+  "w": 453,
+  "h": 1023
+ },
+ "joueur-droite.webp": {
+  "score": 0.851,
+  "scale": 1.0,
+  "x": 509,
+  "y": 130,
+  "w": 529,
+  "h": 963
+ },
+ "../hd/sphere.png": {
+  "score": 0.894,
+  "scale": 0.2,
+  "x": 83,
+  "y": 134,
+  "w": 98,
+  "h": 98
+ },
+ "../poster/logo-ligue1-b.png": {
+  "score": 0.998,
+  "scale": 1.0,
+  "x": 510,
+  "y": 0,
+  "w": 59,
+  "h": 64
+ },
+ "../poster/bande-tricolore.png": {
+  "score": 0.928,
+  "scale": 1.0,
+  "x": 388,
+  "y": 0,
+  "w": 305,
+  "h": 8
+ },
+ "logo-ajel.png": {
+  "score": 0.988,
+  "scale": 0.38,
+  "x": 556,
+  "y": 1150,
+  "w": 53,
+  "h": 69
+ }
+}
